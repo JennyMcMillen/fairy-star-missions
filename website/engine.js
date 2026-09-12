@@ -29,6 +29,10 @@ function migrate(s){
   for(const kind of ['morning','evening'])s.config[kind+'Threshold']=Math.min(s.config[kind+'Threshold'],Math.max(1,s.missions.filter(m=>m.kind===kind).length));
   s.uiRevision=7;changed=true;
  }
+ if((s.uiRevision||0)<8){
+  for(const m of s.missions)if(!['morning','evening'].includes(m.kind))m.repeatable=true;
+  s.uiRevision=8;changed=true;
+ }
  return changed;
 }
 function addOneOff(s,{name,stars,day=dayKey()}){
@@ -68,12 +72,12 @@ function award(s,a){if(hasAward(s,a.key))return null;const entry={id:uid(),creat
 function claimStatus(s,id,day){const cs=s.claims.filter(x=>x.missionId===id&&x.day===day);return cs.find(x=>x.status==='pending')?.status||cs.find(x=>x.status==='approved')?.status||cs.at(-1)?.status||'none';}
 function claim(s,id,day=dayKey()){parseDay(day);const m=mission(s,id);const same=s.claims.filter(x=>x.day===day&&x.missionId===id);
  if(same.some(x=>x.status==='pending'))throw Error('Your fairy is already waiting for this one.');
- if((!m.repeatable||m.kind!=='bonus'||m.unprompted)&&same.some(x=>x.status==='approved'))throw Error('You have already done this one today.');
+ if((!m.repeatable||['morning','evening'].includes(m.kind))&&same.some(x=>x.status==='approved'))throw Error('You have already done this one today.');
  const c={id:uid(),day,missionId:id,name:m.name,kind:m.kind,stars:m.stars,virtues:clone(m.virtues),createdAt:new Date().toISOString(),status:'pending'};s.claims.push(c);return c;}
 function approve(s,id,options={}){const c=s.claims.find(x=>x.id===id);if(!c)throw Error('Claim not found.');if(c.status!=='pending')throw Error('This claim has already been reviewed.');
  const m=mission(s,c.missionId);if(['morning','evening'].includes(c.kind)&&options.firstTime===false)throw Error('Routine missions only count the first time of asking. Use “Not today”.');
  if(m.unprompted&&!options.unprompted)throw Error('Only award an apology made without prompting.');
- if((!m.repeatable||m.kind!=='bonus'||m.unprompted)&&s.claims.some(x=>x.id!==id&&x.day===c.day&&x.missionId===c.missionId&&x.status==='approved'))throw Error('Already approved for this day.');
+ if((!m.repeatable||['morning','evening'].includes(m.kind))&&s.claims.some(x=>x.id!==id&&x.day===c.day&&x.missionId===c.missionId&&x.status==='approved'))throw Error('Already approved for this day.');
  c.status='approved';c.reviewedAt=new Date().toISOString();c.unprompted=!!options.unprompted;
  const start=s.ledger.length;
  if(!['morning','evening'].includes(c.kind)){
@@ -169,7 +173,7 @@ function validateState(s){if(!s||s.version!==1)throw Error('This is not a suppor
  text(s.profile?.name,40);for(const k of ['sound','readAloud','calm'])if(typeof s.profile[k]!=='boolean')throw Error('Invalid profile settings.');if(!s.config||!s.virtues||!s.wardrobe||!s.cats||!s.certificates)throw Error('The backup is incomplete.');
  for(const [k,v] of Object.entries(newState().config))integer(s.config[k],k.endsWith('Threshold')?1:0,k==='morningThreshold'?Math.max(1,s.missions.filter(m=>m.kind==='morning').length):k==='eveningThreshold'?Math.max(1,s.missions.filter(m=>m.kind==='evening').length):10000);
  for(const a of ['missions','rewards','claims','ledger','redemptions','requests']){const ids=s[a].map(x=>x.id);if(ids.some(x=>typeof x!=='string'||x.length>150||!/^[A-Za-z0-9._:-]+$/.test(x))||new Set(ids).size!==ids.length)throw Error('The backup has duplicate or invalid records.');}
- for(const m of s.missions){if(m.oneOffDay)parseDay(m.oneOffDay);text(m.name);integer(m.stars);if(!['morning','evening','behaviour','learning','bonus'].includes(m.kind)||!D.rooms.some(r=>r.id===m.room))throw Error('Invalid mission.');validVirtues(m.virtues);if(typeof m.repeatable!=='boolean'||(m.repeatable&&(m.kind!=='bonus'||m.unprompted)))throw Error('Invalid repeat limit.');}
+ for(const m of s.missions){if(m.oneOffDay)parseDay(m.oneOffDay);text(m.name);integer(m.stars);if(!['morning','evening','behaviour','learning','bonus'].includes(m.kind)||!D.rooms.some(r=>r.id===m.room))throw Error('Invalid mission.');validVirtues(m.virtues);if(typeof m.repeatable!=='boolean'||(m.repeatable&&['morning','evening'].includes(m.kind)))throw Error('Invalid repeat limit.');}
  for(const r of s.rewards){text(r.name);integer(r.price);if(!['none','days','week','month'].includes(r.cooldown?.type))throw Error('Invalid reward cooldown.');integer(r.cooldown.days,0,3650);}
  const keys=new Set();for(const a of s.ledger){text(a.name,150);parseDay(a.day);integer(a.stars);if(typeof a.collected!=='boolean'||!Array.isArray(a.virtues)||a.virtues.some(v=>!D.virtues[v])||typeof a.key!=='string'||keys.has(a.key))throw Error('Invalid star ledger.');keys.add(a.key);if(a.tokens!==undefined)integer(a.tokens);}
  for(const a of s.redemptions){text(a.name,150);parseDay(a.day);integer(a.cost);}

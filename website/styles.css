@@ -127,9 +127,19 @@ body.calm .companion-layer .companion-art{animation:none!important}
 }
 
 /* Progress towards a routine star, shown when a single job earns nothing yet. */
-.routine-progress{display:flex;flex-direction:column;align-items:center;gap:10px;margin:4px 0 16px}
-.routine-progress-track{display:flex;gap:9px}
-.routine-progress-track span{width:17px;height:17px;border-radius:50%;background:#efe7db;border:2px solid var(--line)}
-.routine-progress-track span.filled{background:var(--gold);border-color:#c2913a}
-.routine-progress-track span.next{background:var(--paper);border-color:var(--gold);box-shadow:0 0 0 4px #e7b34e33}
-.routine-progress p{color:var(--muted);max-width:26ch}
+.routine-progress{display:flex;flex-direction:column;align-items:center;gap:10px;margin:6px 0 16px}
+.routine-progress p{color:var(--muted);max-width:28ch}
+.part-star{position:relative;width:88px;height:88px}
+.part-star span{position:absolute;inset:0;display:block}
+.part-star .big-star{width:100%;height:100%;max-height:none;flex:none}
+.part-star-empty{filter:grayscale(1) opacity(.26)}
+
+/* Long job names were clipping to under two lines ("Washing in the basket,
+   pajamas..."). Wider labels with room for three lines, and matching button
+   boxes so layoutScene keeps its spacing and collision checks honest. */
+.mission-fairy{width:134px;height:136px}
+.mission-fairy .mission-label{max-width:134px;min-height:0;max-height:50px;-webkit-line-clamp:3;font-size:11px;line-height:1.18;padding:4px 7px}
+.compact-missions .mission-fairy{width:118px;height:118px}
+.compact-missions .mission-fairy .mission-label{max-width:118px;min-height:0;max-height:44px;-webkit-line-clamp:3;font-size:10px!important;line-height:1.18;padding:3px 5px!important}
+.garden-dense .mission-fairy{width:106px;height:114px}
+.garden-dense .mission-fairy .mission-label{max-width:106px!important;min-height:0;max-height:40px!important;-webkit-line-clamp:3;font-size:9px!important;line-height:1.18;padding:3px!important}
