@@ -7,7 +7,7 @@ function star(ctx,r){ctx.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*
 function burst({stars=0,calm=false}={}){
  stop();const host=document.getElementById('celebration');if(!host)return;
  host.dataset.bursts=String(Number(host.dataset.bursts||0)+1);host.dataset.stars=String(stars);
- const reduced=calm||root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const reduced=calm;
  host.dataset.mode=reduced?'calm':'confetti';
  if(reduced){const el=document.createElement('div');el.className='calm-celebration';el.textContent='✦ Well done! ✦';host.append(el);timeout=setTimeout(stop,2300);return;}
  canvas=document.createElement('canvas');canvas.className='confetti-canvas';host.append(canvas);

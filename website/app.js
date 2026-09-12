@@ -9,7 +9,7 @@ const arrivalAnimations=new Set();
 const WLD=window.FairyWorld;
 let followerFrame=0,leaderHistory=[],lastFollowTick=0,catBusy=false,cuddleCleanup=null,midnightTimer=null;
 const followerPoints=new Map(),cuddleBlobs=new Map();let audioContext=null;
-const reduced=()=>!!S?.profile.calm||matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduced=()=>!!S?.profile.calm;
 let selections=new Set(),listScope='all';
 let touchPress=null,touchClickBlocked=false;
 const linePaths={close:'M6 6L18 18M18 6L6 18',back:'M15 5L8 12L15 19',down:'M5 9L12 16L19 9',pin:'M9 3H15L14 9L18 13V15H6V13L10 9Z M12 15V21',camera:'M3 7H8L10 4H14L16 7H21V20H3Z M16 13A4 4 0 1 0 8 13A4 4 0 1 0 16 13',list:'M9 6H21M9 12H21M9 18H21M3 6H4M3 12H4M3 18H4',plus:'M12 4V20M4 12H20',download:'M12 3V15M7 10L12 15L17 10M4 17V21H20V17',reward:'M4 9H20V21H4ZM2 5H22V9H2ZM12 5V21M12 5C5 5 4 1 7 1C10 1 12 5 12 5ZM12 5C19 5 20 1 17 1C14 1 12 5 12 5Z'};
@@ -113,9 +113,17 @@ function openModal(title,body,{compact=false,drawer=false,context=null}={}){cons
 function closeModal(restore=true){const d=modalRoot.querySelector('dialog');if(d){d.close();d.remove();}dialogContext=null;if(restore&&returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else if(restore&&view==='home')document.querySelector('[data-action="rooms"]')?.focus({preventScroll:true});returnFocus=null;}
 function showError(err){console.error(err);const el=document.getElementById('modal-error');if(el)el.textContent=err.message||'That change could not be saved.';else toast(err.message||'That change could not be saved.');}
 function toast(text){const el=document.getElementById('toast');el.textContent=text;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3800);}
+function routineProgress(m){const p=E.blockProgress(S,E.dayKey(),m.kind),word=m.kind==='morning'?'morning':'bedtime';
+ if(p.awarded)return `<p class="center small muted">Your ${word} star is already safe. Thank you for doing this one too.</p>`;
+ const left=Math.max(0,p.threshold-p.approved-1);
+ const pips=Array.from({length:p.threshold},(_,i)=>`<span class="${i<p.approved?'filled':i===p.approved?'next':''}"></span>`).join('');
+ return `<div class="routine-progress"><div class="routine-progress-track" aria-hidden="true">${pips}</div><p class="center small">${left?`${left} more ${word} job${left===1?'':'s'} after this one, then your star appears.`:'This one finishes the routine and earns your star.'}</p></div>`;}
 function bigStars(n){if(n<1)return '';const count=n>10?1:n;return `<div class="award-stars" role="img" aria-label="Earn ${stars(n)}">${Array.from({length:count},()=>A.icon('star','big-star').replace('viewBox="0 0 100 100"','viewBox="18 18 64 64"')).join('')}${n>10?`<span class="star-count">× ${n}</span>`:''}</div>`;}
 function openMission(id){const m=E.mission(S,id);let n=0;const isDone=done(m)&&!m.repeatable;if(!isDone)n=E.previewStars(S,id);const routine=['morning','evening'].includes(m.kind);
  let body=isDone?'<div class="notice good center">Done for today.</div>':n?bigStars(n):'';
+ // Routine jobs are worth no stars on their own, so without this the child was
+ // shown an empty box and no reason why no star appeared.
+ if(!isDone&&!n&&routine)body+=routineProgress(m);
  
  body+=button('claim',isDone?'Already done':m.repeatable&&done(m)?'I did it again!':'I did it!','primary wide mission-confirm',`data-id="${h(id)}" ${isDone?'disabled':''}`);
  openModal(m.name,body,{compact:true,context:{type:'mission',id}});
@@ -125,7 +133,7 @@ function celebrate(n){window.FairyCelebrations.burst({stars:n,calm:!!S.profile.c
 
 function missionOrigin(id){const el=[...document.querySelectorAll('.mission-star')].find(b=>b.dataset.id===id);if(!el)return null;const r=el.querySelector('.fairy-shell').getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};}
 function clearArrivals(){for(const item of arrivalAnimations){item.animation?.cancel();item.el.remove();item.target?.classList.remove('arriving');}arrivalAnimations.clear();}
-function flyToAlba(id,origin,delay=0){if(view!=='home'||!origin||S.profile.calm||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const scene=document.getElementById('scene'),target=[...scene.querySelectorAll('[data-follow-mission]')].filter(el=>el.dataset.followMission===id).at(-1);if(!target)return;
+function flyToAlba(id,origin,delay=0){if(view!=='home'||!origin||reduced())return;const scene=document.getElementById('scene'),target=[...scene.querySelectorAll('[data-follow-mission]')].filter(el=>el.dataset.followMission===id).at(-1);if(!target)return;
  const sr=scene.getBoundingClientRect(),r=target.getBoundingClientRect(),from={x:origin.x-sr.left,y:origin.y-sr.top},to={x:r.left-sr.left+r.width/2,y:r.top-sr.top+r.height/2};
  target.classList.add('arriving');const el=document.createElement('div');el.className='fairy-arrival';el.setAttribute('aria-hidden','true');el.innerHTML=A.taskFairy(id,'arrival-art');scene.append(el);
  const frames=[];for(let i=0;i<=24;i++){const t=i/24,x=from.x+(to.x-from.x)*t,y=from.y+(to.y-from.y)*t-Math.sin(Math.PI*t)*Math.min(95,scene.clientHeight*.13);frames.push({transform:`translate(${x}px,${y}px) translate(-50%,-50%) rotate(${Math.sin(Math.PI*t)*9}deg) scale(${1-.3*t})`});}
@@ -134,7 +142,7 @@ function flyToAlba(id,origin,delay=0){if(view!=='home'||!origin||S.profile.calm|
 function cancelActorFall(){cancelAnimationFrame(fallFrame);fallFrame=0;document.getElementById('alba')?.classList.remove('falling');}
 function settleActor(){cancelActorFall();const actor=document.getElementById('alba'),scene=document.getElementById('scene');if(!actor||!scene)return;
  const floor=.94,H=scene.clientHeight,from=parseFloat(actor.style.top)/H,delta=floor-from;actorPoint.y=from;
- if(Math.abs(delta)*H<2||S.profile.calm||matchMedia('(prefers-reduced-motion: reduce)').matches){actorPoint.y=floor;positionActor();return;}
+ if(Math.abs(delta)*H<2||reduced()){actorPoint.y=floor;positionActor();return;}
  const start=performance.now(),duration=Math.max(260,Math.min(690,Math.sqrt(Math.abs(delta)*H/950)*1000));actor.classList.add('falling');
  function tick(now){if(!actor.isConnected||drag){cancelActorFall();return;}const t=Math.min(1,(now-start)/duration);actorPoint.y=from+delta*t*t;positionActor();if(t<1)fallFrame=requestAnimationFrame(tick);else{fallFrame=0;actor.classList.remove('falling');actorPoint.y=floor;positionActor();}}
  fallFrame=requestAnimationFrame(tick);
@@ -307,6 +315,17 @@ function rollover(){if(!S)return false;const day=E.dayKey();if(day===lastDay)ret
 }
 setInterval(rollover,15000);window.addEventListener('focus',()=>{rollover();scheduleMidnight();});window.addEventListener('pageshow',()=>{rollover();scheduleMidnight();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopFollowers();else{rollover();scheduleMidnight();startFollowers();}});
-async function start(){try{S=await DB.load()||E.newState();E.validateState(S);if(E.migrate(S)){E.validateState(S);await DB.save(S,S.revision);}render();scheduleMidnight();prepareOffline();}catch(err){app.innerHTML=`<main class="page"><div class="empty-state"><h1>Your little world could not open.</h1><p>${h(err.message)} No saved records have been replaced.</p><p>Open the preview in a normal browser window. Avoid private browsing for saved progress.</p></div></main>`;console.error(err);}}
+/* Hold off the iPad's auto-lock while Alba has the app open. Safari drops the
+   lock every time the app is backgrounded, so ask for it again on each return. */
+let wakeLock=null;
+async function holdScreenAwake(){
+ if(wakeLock||document.hidden||!('wakeLock' in navigator))return;
+ try{wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null;});}
+ catch{wakeLock=null;}
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)wakeLock=null;else holdScreenAwake();});
+document.addEventListener('pointerdown',()=>{holdScreenAwake();},true);
+
+async function start(){try{S=await DB.load()||E.newState();E.validateState(S);if(E.migrate(S)){E.validateState(S);await DB.save(S,S.revision);}render();scheduleMidnight();prepareOffline();holdScreenAwake();}catch(err){app.innerHTML=`<main class="page"><div class="empty-state"><h1>Your little world could not open.</h1><p>${h(err.message)} No saved records have been replaced.</p><p>Open the preview in a normal browser window. Avoid private browsing for saved progress.</p></div></main>`;console.error(err);}}
 start();
 })();
