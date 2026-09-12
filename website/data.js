@@ -35,7 +35,8 @@ const missions=[
  M('try-again','Try again when something is tricky','bonus',3,'garden','tree',['extra'],{repeatable:true}),
  M('truth','Tell the truth when it is hard','bonus',5,'garden','tree',['extra'],{repeatable:true}),
  M('water-plants','Water the plants','bonus',2,'garden','tree',['helper'],{repeatable:true}),
- M('no-screens','An hour with no screens','bonus',2,'living','books',['extra'],{repeatable:true})
+ M('no-screens','An hour with no screens','bonus',2,'living','books',['extra'],{repeatable:true}),
+ M('tidy-conservatory','Tidy up conservatory','bonus',1,'conservatory','toys',['helper'],{repeatable:true})
 ];
 const R=(id,name,price,icon,note='',cooldown={type:'none',days:0})=>({id,name,price,icon,note,cooldown,available:true});
 const rewards=[
@@ -74,7 +75,8 @@ const rooms=[
  {id:'living',name:'Living room',label:'Stories, snuggles and memories',icon:'books'},
  {id:'study',name:'My desk',label:'Something new to discover',icon:'desk'},
  {id:'aubrey',name:'Aubrey’s room',label:'Kindness makes a happy home',icon:'teddy'},
- {id:'garden',name:'Fairy garden',label:'Where little kindnesses grow',icon:'tree'}
+ {id:'garden',name:'Fairy garden',label:'Where little kindnesses grow',icon:'tree'},
+ {id:'conservatory',name:'Conservatory',label:'Sunshine, toys and space to play',icon:'toys'}
 ];
 const outfits=[
  {id:'rose',name:'Rose petal',cost:0,color:'#d984a4',accent:'#f4c7d7'},
