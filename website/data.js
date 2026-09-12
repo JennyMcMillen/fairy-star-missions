@@ -33,7 +33,9 @@ const missions=[
  M('initiative','Do a job before being asked','bonus',2,'garden','tree',['helper','extra'],{repeatable:true}),
  M('sorry','Say sorry without being asked','bonus',2,'garden','tree',['team'],{unprompted:true,repeatable:true}),
  M('try-again','Try again when something is tricky','bonus',3,'garden','tree',['extra'],{repeatable:true}),
- M('truth','Tell the truth when it is hard','bonus',5,'garden','tree',['extra'],{repeatable:true})
+ M('truth','Tell the truth when it is hard','bonus',5,'garden','tree',['extra'],{repeatable:true}),
+ M('water-plants','Water the plants','bonus',2,'garden','tree',['helper'],{repeatable:true}),
+ M('no-screens','An hour with no screens','bonus',2,'living','books',['extra'],{repeatable:true})
 ];
 const R=(id,name,price,icon,note='',cooldown={type:'none',days:0})=>({id,name,price,icon,note,cooldown,available:true});
 const rewards=[

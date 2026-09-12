@@ -33,6 +33,10 @@ function migrate(s){
   for(const m of s.missions)if(!['morning','evening'].includes(m.kind))m.repeatable=true;
   s.uiRevision=8;changed=true;
  }
+ if((s.uiRevision||0)<9){
+  for(const id of ['water-plants','no-screens'])if(!s.missions.some(m=>m.id===id))s.missions.push(clone(D.missions.find(m=>m.id===id)));
+  s.uiRevision=9;changed=true;
+ }
  return changed;
 }
 function addOneOff(s,{name,stars,day=dayKey()}){
