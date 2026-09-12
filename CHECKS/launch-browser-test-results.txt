@@ -1,0 +1,16 @@
+PASS Fresh iPad defaults show zero stars
+PASS All default room and character artwork loads
+PASS Opening the new file does not silently erase stored progress
+PASS Clear test progress asks for explicit confirmation
+PASS Empty confirmation cannot clear progress
+PASS Wrong confirmation cannot clear progress
+PASS Cancel keeps existing stars and history
+PASS Confirmed reset displays zero balance
+PASS Confirmed reset removes completions, spending and cats
+PASS Price and pin choices are kept
+PASS Photo metadata and actual blob are kept
+PASS Prior progress exists in the pre-reset test adapter snapshot
+PASS Real stars can be earned after reset
+PASS Retained photo is still viewable
+PASS No uncaught browser exceptions
+15 checks passed

@@ -1,0 +1,794 @@
+
+> fairy-star-missions@1.7.1 test
+> node --test tests/*.test.cjs
+
+TAP version 13
+# Subtest: current defaults: 32 missions, 16 rewards and zero starting stars
+ok 1 - current defaults: 32 missions, 16 rewards and zero starting stars
+  ---
+  duration_ms: 2.248653
+  type: 'test'
+  ...
+# Subtest: claiming never adds stars
+ok 2 - claiming never adds stars
+  ---
+  duration_ms: 2.426328
+  type: 'test'
+  ...
+# Subtest: recorded awards are spendable immediately, without a collect step
+ok 3 - recorded awards are spendable immediately, without a collect step
+  ---
+  duration_ms: 0.69944
+  type: 'test'
+  ...
+# Subtest: morning still pays at 3 jobs with the extra fifth clothing task
+ok 4 - morning still pays at 3 jobs with the extra fifth clothing task
+  ---
+  duration_ms: 0.588265
+  type: 'test'
+  ...
+# Subtest: four evening jobs earn one routine star; bedtime separately earns two
+ok 5 - four evening jobs earn one routine star; bedtime separately earns two
+  ---
+  duration_ms: 0.587523
+  type: 'test'
+  ...
+# Subtest: first-time-of-asking guard rejects routine approval
+ok 6 - first-time-of-asking guard rejects routine approval
+  ---
+  duration_ms: 0.622686
+  type: 'test'
+  ...
+# Subtest: repeated pending claim is blocked
+ok 7 - repeated pending claim is blocked
+  ---
+  duration_ms: 0.382899
+  type: 'test'
+  ...
+# Subtest: behaviour may only be awarded once a day
+ok 8 - behaviour may only be awarded once a day
+  ---
+  duration_ms: 0.320146
+  type: 'test'
+  ...
+# Subtest: all five behaviours add a single +2 bonus
+ok 9 - all five behaviours add a single +2 bonus
+  ---
+  duration_ms: 0.623017
+  type: 'test'
+  ...
+# Subtest: learning cap is two STARS, homework consumes both
+ok 10 - learning cap is two STARS, homework consumes both
+  ---
+  duration_ms: 0.665921
+  type: 'test'
+  ...
+# Subtest: remaining learning allowance clips a later homework award
+ok 11 - remaining learning allowance clips a later homework award
+  ---
+  duration_ms: 0.864495
+  type: 'test'
+  ...
+# Subtest: learning cap is independent each local day
+ok 12 - learning cap is independent each local day
+  ---
+  duration_ms: 0.234349
+  type: 'test'
+  ...
+# Subtest: apology must be unprompted and only once per day
+ok 13 - apology must be unprompted and only once per day
+  ---
+  duration_ms: 0.263622
+  type: 'test'
+  ...
+# Subtest: repeatable bonus allows separate occasions after review
+ok 14 - repeatable bonus allows separate occasions after review
+  ---
+  duration_ms: 0.265514
+  type: 'test'
+  ...
+# Subtest: a declined claim can be tried again, without removing stars
+ok 15 - a declined claim can be tried again, without removing stars
+  ---
+  duration_ms: 0.286035
+  type: 'test'
+  ...
+# Subtest: the same approval cannot pay twice
+ok 16 - the same approval cannot pay twice
+  ---
+  duration_ms: 0.219767
+  type: 'test'
+  ...
+# Subtest: parent direct awards use exactly the same economy
+ok 17 - parent direct awards use exactly the same economy
+  ---
+  duration_ms: 0.242741
+  type: 'test'
+  ...
+# Subtest: a whole Mon–Sun week pays +10 and a separate moon button only once
+ok 18 - a whole Mon–Sun week pays +10 and a separate moon button only once
+  ---
+  duration_ms: 2.791581
+  type: 'test'
+  ...
+# Subtest: six days do not make a full-week bonus and a quiet new week removes nothing
+ok 19 - six days do not make a full-week bonus and a quiet new week removes nothing
+  ---
+  duration_ms: 2.036728
+  type: 'test'
+  ...
+# Subtest: outfits consume only moon buttons and remain owned
+ok 20 - outfits consume only moon buttons and remain owned
+  ---
+  duration_ms: 2.007825
+  type: 'test'
+  ...
+# Subtest: redemption request does not spend anything
+ok 21 - redemption request does not spend anything
+  ---
+  duration_ms: 0.532131
+  type: 'test'
+  ...
+# Subtest: approved redemption deducts once and never removes earned history
+ok 22 - approved redemption deducts once and never removes earned history
+  ---
+  duration_ms: 0.435778
+  type: 'test'
+  ...
+# Subtest: insufficient funds cannot be overridden
+ok 23 - insufficient funds cannot be overridden
+  ---
+  duration_ms: 0.253056
+  type: 'test'
+  ...
+# Subtest: monthly crown cooldown uses calendar month, not a high price
+ok 24 - monthly crown cooldown uses calendar month, not a high price
+  ---
+  duration_ms: 0.272365
+  type: 'test'
+  ...
+# Subtest: explicit parent exception can override cooldown, not affordability
+ok 25 - explicit parent exception can override cooldown, not affordability
+  ---
+  duration_ms: 0.216773
+  type: 'test'
+  ...
+# Subtest: day-based cooldown is independent of price
+ok 26 - day-based cooldown is independent of price
+  ---
+  duration_ms: 12.814213
+  type: 'test'
+  ...
+# Subtest: weekly cooldown rolls on Monday
+ok 27 - weekly cooldown rolls on Monday
+  ---
+  duration_ms: 1.476275
+  type: 'test'
+  ...
+# Subtest: weekly cash cap defaults to 30 stars and cannot be overridden
+ok 28 - weekly cash cap defaults to 30 stars and cannot be overridden
+  ---
+  duration_ms: 1.105153
+  type: 'test'
+  ...
+# Subtest: £5 saver is unavailable under 30-star cap, enabled explicitly at 65
+ok 29 - £5 saver is unavailable under 30-star cap, enabled explicitly at 65
+  ---
+  duration_ms: 0.307176
+  type: 'test'
+  ...
+# Subtest: a day off pays only routine blocks, does not invent behaviours
+ok 30 - a day off pays only routine blocks, does not invent behaviours
+  ---
+  duration_ms: 0.428617
+  type: 'test'
+  ...
+# Subtest: custom one-off awards immediately without polluting the board
+ok 31 - custom one-off awards immediately without polluting the board
+  ---
+  duration_ms: 0.240638
+  type: 'test'
+  ...
+# Subtest: custom saved mission stays on the permanent kindness tree
+ok 32 - custom saved mission stays on the permanent kindness tree
+  ---
+  duration_ms: 0.203813
+  type: 'test'
+  ...
+# Subtest: pending claims retain their original star values when setup changes
+ok 33 - pending claims retain their original star values when setup changes
+  ---
+  duration_ms: 0.221179
+  type: 'test'
+  ...
+# Subtest: best week never goes backwards and ranks do not carry
+ok 34 - best week never goes backwards and ranks do not carry
+  ---
+  duration_ms: 0.473314
+  type: 'test'
+  ...
+# Subtest: each virtue has independent thresholds and all-zero weeks are positive
+ok 35 - each virtue has independent thresholds and all-zero weeks are positive
+  ---
+  duration_ms: 0.835272
+  type: 'test'
+  ...
+# Subtest: season windows overlap, birthday above daffodils
+ok 36 - season windows overlap, birthday above daffodils
+  ---
+  duration_ms: 0.342749
+  type: 'test'
+  ...
+# Subtest: winter spans year end; fixed windows include both end dates
+ok 37 - winter spans year end; fixed windows include both end dates
+  ---
+  duration_ms: 0.253197
+  type: 'test'
+  ...
+# Subtest: Gregorian Easter is calculated, including a March Easter
+ok 38 - Gregorian Easter is calculated, including a March Easter
+  ---
+  duration_ms: 0.250102
+  type: 'test'
+  ...
+# Subtest: cat hiding places are deterministic, distinct and grant no stars
+ok 39 - cat hiding places are deterministic, distinct and grant no stars
+  ---
+  duration_ms: 0.738618
+  type: 'test'
+  ...
+# Subtest: local calendar utilities handle Monday, Sunday, year boundaries and invalid dates
+ok 40 - local calendar utilities handle Monday, Sunday, year boundaries and invalid dates
+  ---
+  duration_ms: 0.140028
+  type: 'test'
+  ...
+# Subtest: backup validation rejects duplicate awards and negative balances
+ok 41 - backup validation rejects duplicate awards and negative balances
+  ---
+  duration_ms: 1.176889
+  type: 'test'
+  ...
+# Subtest: backup validation rejects invalid rank scales and non-finite points
+ok 42 - backup validation rejects invalid rank scales and non-finite points
+  ---
+  duration_ms: 0.590097
+  type: 'test'
+  ...
+# Subtest: round-trip serialisation preserves a real week, purchases and awards
+ok 43 - round-trip serialisation preserves a real week, purchases and awards
+  ---
+  duration_ms: 2.385927
+  type: 'test'
+  ...
+# Subtest: every cat moves to a different room every day, including month boundaries
+ok 44 - every cat moves to a different room every day, including month boundaries
+  ---
+  duration_ms: 2.160833
+  type: 'test'
+  ...
+# Subtest: once-per-day behaviours cannot be made repeatable by an invalid flag
+ok 45 - once-per-day behaviours cannot be made repeatable by an invalid flag
+  ---
+  duration_ms: 0.325194
+  type: 'test'
+  ...
+# Subtest: backup identifiers cannot inject HTML into attribute values
+ok 46 - backup identifiers cannot inject HTML into attribute values
+  ---
+  duration_ms: 0.400335
+  type: 'test'
+  ...
+# Subtest: an awarded block retains its historic displayed value after a setting change
+ok 47 - an awarded block retains its historic displayed value after a setting change
+  ---
+  duration_ms: 0.36366
+  type: 'test'
+  ...
+# Subtest: New iPad state has no seeded stars, completions or spending
+ok 48 - New iPad state has no seeded stars, completions or spending
+  ---
+  duration_ms: 2.137198
+  type: 'test'
+  ...
+# Subtest: Clean start zeros stars even after test spending and reenables completed missions
+ok 49 - Clean start zeros stars even after test spending and reenables completed missions
+  ---
+  duration_ms: 3.962512
+  type: 'test'
+  ...
+# Subtest: Clean start preserves all edited missions, rewards, pins, prices and settings
+ok 50 - Clean start preserves all edited missions, rewards, pins, prices and settings
+  ---
+  duration_ms: 2.092852
+  type: 'test'
+  ...
+# Subtest: Photo metadata and references are preserved byte for byte
+ok 51 - Photo metadata and references are preserved byte for byte
+  ---
+  duration_ms: 0.638339
+  type: 'test'
+  ...
+# Subtest: Daily cats and weekly progress are reset; reward cooldowns clear
+ok 52 - Daily cats and weekly progress are reset; reward cooldowns clear
+  ---
+  duration_ms: 0.700211
+  type: 'test'
+  ...
+# Subtest: New real progress persists after migration/reopening and is not reset again
+ok 53 - New real progress persists after migration/reopening and is not reset again
+  ---
+  duration_ms: 0.758347
+  type: 'test'
+  ...
+# Subtest: Empty ledger does not create a negative wardrobe balance
+ok 54 - Empty ledger does not create a negative wardrobe balance
+  ---
+  duration_ms: 0.661364
+  type: 'test'
+  ...
+# Subtest: One-off definitions are not deleted with the activity history
+ok 55 - One-off definitions are not deleted with the activity history
+  ---
+  duration_ms: 1.054628
+  type: 'test'
+  ...
+# Subtest: Invalid reset date fails before mutation
+ok 56 - Invalid reset date fails before mutation
+  ---
+  duration_ms: 1.065494
+  type: 'test'
+  ...
+# Subtest: Reset is idempotent for the same start date and leaves source clone available for rollback
+ok 57 - Reset is idempotent for the same start date and leaves source clone available for rollback
+  ---
+  duration_ms: 1.087387
+  type: 'test'
+  ...
+# Subtest: Live and preview databases remain separate; reset never deletes a database or photos
+ok 58 - Live and preview databases remain separate; reset never deletes a database or photos
+  ---
+  duration_ms: 0.277122
+  type: 'test'
+  ...
+# Subtest: Aubrey has the original stable room ID and correct default mission names
+ok 59 - Aubrey has the original stable room ID and correct default mission names
+  ---
+  duration_ms: 1.540551
+  type: 'test'
+  ...
+# Subtest: correction updates old default mission, claim and ledger names without changing stars
+ok 60 - correction updates old default mission, claim and ledger names without changing stars
+  ---
+  duration_ms: 5.034505
+  type: 'test'
+  ...
+# Subtest: correction is idempotent and preserves parent-edited mission wording
+ok 61 - correction is idempotent and preserves parent-edited mission wording
+  ---
+  duration_ms: 0.347136
+  type: 'test'
+  ...
+# Subtest: all nine approved room assets exist with no painted-over props
+ok 62 - all nine approved room assets exist with no painted-over props
+  ---
+  duration_ms: 0.459333
+  type: 'test'
+  ...
+# Subtest: Alba uses the approved bunk room and Aubrey the approved cartoon nursery
+ok 63 - Alba uses the approved bunk room and Aubrey the approved cartoon nursery
+  ---
+  duration_ms: 0.320787
+  type: 'test'
+  ...
+# Subtest: standalone preview embeds all twenty-three images and has no external script or stylesheet dependencies
+ok 64 - standalone preview embeds all twenty-three images and has no external script or stylesheet dependencies
+  ---
+  duration_ms: 90.354954
+  type: 'test'
+  ...
+# Subtest: offline application cache includes every current room illustration
+ok 65 - offline application cache includes every current room illustration
+  ---
+  duration_ms: 1.308495
+  type: 'test'
+  ...
+# Subtest: one-off mission is added unticked without giving any stars
+ok 66 - one-off mission is added unticked without giving any stars
+  ---
+  duration_ms: 6.856945
+  type: 'test'
+  ...
+# Subtest: one-off can be completed only once on its assigned day
+ok 67 - one-off can be completed only once on its assigned day
+  ---
+  duration_ms: 1.671475
+  type: 'test'
+  ...
+# Subtest: one-off name and star value are validated
+ok 68 - one-off name and star value are validated
+  ---
+  duration_ms: 1.592318
+  type: 'test'
+  ...
+# Subtest: mission modal star preview reflects the learning cap, without mutating state
+ok 69 - mission modal star preview reflects the learning cap, without mutating state
+  ---
+  duration_ms: 2.581128
+  type: 'test'
+  ...
+# Subtest: routine modal previews only the award that the next task will earn
+ok 70 - routine modal previews only the award that the next task will earn
+  ---
+  duration_ms: 1.060016
+  type: 'test'
+  ...
+# Subtest: migration restores missing front-room mission and relocates the two named tasks
+ok 71 - migration restores missing front-room mission and relocates the two named tasks
+  ---
+  duration_ms: 0.94786
+  type: 'test'
+  ...
+# Subtest: future migrations do not overwrite a subsequently edited mission room
+ok 72 - future migrations do not overwrite a subsequently edited mission room
+  ---
+  duration_ms: 0.325454
+  type: 'test'
+  ...
+# Subtest: all defaults have exactly one valid mission room
+ok 73 - all defaults have exactly one valid mission room
+  ---
+  duration_ms: 0.63893
+  type: 'test'
+  ...
+# Subtest: bedtime correction is retained in claims and deducts the affected star
+ok 74 - bedtime correction is retained in claims and deducts the affected star
+  ---
+  duration_ms: 0.790535
+  type: 'test'
+  ...
+# Subtest: a correction does not rewrite unrelated past routine values
+ok 75 - a correction does not rewrite unrelated past routine values
+  ---
+  duration_ms: 1.081508
+  type: 'test'
+  ...
+# Subtest: learning correction redistributes the cap to remaining recorded learning
+ok 76 - learning correction redistributes the cap to remaining recorded learning
+  ---
+  duration_ms: 7.561683
+  type: 'test'
+  ...
+# Subtest: multiple pins do not allocate or deduct separate pots of stars
+ok 77 - multiple pins do not allocate or deduct separate pots of stars
+  ---
+  duration_ms: 1.431138
+  type: 'test'
+  ...
+# Subtest: mission list values preserve individual star amounts, including one-offs
+ok 78 - mission list values preserve individual star amounts, including one-offs
+  ---
+  duration_ms: 3.361288
+  type: 'test'
+  ...
+# Subtest: routine list values explicitly describe the shared award, not per-task pay
+ok 79 - routine list values explicitly describe the shared award, not per-task pay
+  ---
+  duration_ms: 0.870965
+  type: 'test'
+  ...
+# Subtest: learning star values retain a daily limit in the accessible description
+ok 80 - learning star values retain a daily limit in the accessible description
+  ---
+  duration_ms: 0.281568
+  type: 'test'
+  ...
+# Subtest: reward grouping covers every cost boundary without duplicates
+ok 81 - reward grouping covers every cost boundary without duplicates
+  ---
+  duration_ms: 0.676115
+  type: 'test'
+  ...
+# Subtest: groups and rows are sorted by price without mutating saved reward order
+ok 82 - groups and rows are sorted by price without mutating saved reward order
+  ---
+  duration_ms: 6.392114
+  type: 'test'
+  ...
+# Subtest: reward progress shows saved stars, target, and remaining amount
+ok 83 - reward progress shows saved stars, target, and remaining amount
+  ---
+  duration_ms: 1.241566
+  type: 'test'
+  ...
+# Subtest: reward progress caps at the target and all rewards share the same balance
+ok 84 - reward progress caps at the target and all rewards share the same balance
+  ---
+  duration_ms: 0.474345
+  type: 'test'
+  ...
+# Subtest: zero-cost rewards have defined, ready progress
+ok 85 - zero-cost rewards have defined, ready progress
+  ---
+  duration_ms: 0.301508
+  type: 'test'
+  ...
+# Subtest: limits are shown independently of available stars and actual cooldown enforcement
+ok 86 - limits are shown independently of available stars and actual cooldown enforcement
+  ---
+  duration_ms: 0.470149
+  type: 'test'
+  ...
+# Subtest: pocket-money star cap, used allowance and saver cost are explicit
+ok 87 - pocket-money star cap, used allowance and saver cost are explicit
+  ---
+  duration_ms: 0.548135
+  type: 'test'
+  ...
+# Subtest: custom reward is saved with price and frequency, but does not award or spend stars
+ok 88 - custom reward is saved with price and frequency, but does not award or spend stars
+  ---
+  duration_ms: 0.9218
+  type: 'test'
+  ...
+# Subtest: custom reward can be pinned and redeemed with its own cooldown
+ok 89 - custom reward can be pinned and redeemed with its own cooldown
+  ---
+  duration_ms: 0.7064
+  type: 'test'
+  ...
+# Subtest: saved reward edits keep their ID, metadata, and pins while changing groups
+ok 90 - saved reward edits keep their ID, metadata, and pins while changing groups
+  ---
+  duration_ms: 0.415527
+  type: 'test'
+  ...
+# Subtest: custom reward validation rejects invalid prices, names, icons and days without saving
+ok 91 - custom reward validation rejects invalid prices, names, icons and days without saving
+  ---
+  duration_ms: 3.064116
+  type: 'test'
+  ...
+# Subtest: non-day limits normalize unused day fields and whitespace is trimmed
+ok 92 - non-day limits normalize unused day fields and whitespace is trimmed
+  ---
+  duration_ms: 0.297783
+  type: 'test'
+  ...
+# Subtest: Round 5 cache and standalone builder include the shared list module
+ok 93 - Round 5 cache and standalone builder include the shared list module
+  ---
+  duration_ms: 176.58732
+  type: 'test'
+  ...
+# Subtest: all six supplied fairies are balanced automatically over the 32 default missions
+ok 94 - all six supplied fairies are balanced automatically over the 32 default missions
+  ---
+  duration_ms: 1.363227
+  type: 'test'
+  ...
+# Subtest: fairy assignments remain stable after a task is renamed, moved or reordered
+ok 95 - fairy assignments remain stable after a task is renamed, moved or reordered
+  ---
+  duration_ms: 0.79326
+  type: 'test'
+  ...
+# Subtest: routine completion gains a fairy without inventing individual routine stars
+ok 96 - routine completion gains a fairy without inventing individual routine stars
+  ---
+  duration_ms: 2.242704
+  type: 'test'
+  ...
+# Subtest: a capped learning completion still joins the fairy companions
+ok 97 - a capped learning completion still joins the fairy companions
+  ---
+  duration_ms: 0.505311
+  type: 'test'
+  ...
+# Subtest: companions use the same design as their task and retain original claim identity
+ok 98 - companions use the same design as their task and retain original claim identity
+  ---
+  duration_ms: 0.349961
+  type: 'test'
+  ...
+# Subtest: corrected tasks leave the companion group without changing any other fairy assignment
+ok 99 - corrected tasks leave the companion group without changing any other fairy assignment
+  ---
+  duration_ms: 3.387657
+  type: 'test'
+  ...
+# Subtest: large days draw only eight recent companions and keep the latest visible
+ok 100 - large days draw only eight recent companions and keep the latest visible
+  ---
+  duration_ms: 0.822262
+  type: 'test'
+  ...
+# Subtest: reward progress uses current / target fractions without remaining-star prose
+ok 101 - reward progress uses current / target fractions without remaining-star prose
+  ---
+  duration_ms: 0.622776
+  type: 'test'
+  ...
+# Subtest: completed progress is capped at target and zero cost is defined
+ok 102 - completed progress is capped at target and zero cost is defined
+  ---
+  duration_ms: 0.758858
+  type: 'test'
+  ...
+# Subtest: all 23 assets and the visual modules are embedded into the preview and cached offline
+ok 103 - all 23 assets and the visual modules are embedded into the preview and cached offline
+  ---
+  duration_ms: 138.750292
+  type: 'test'
+  ...
+# Subtest: unwanted reward and photo album descriptions are removed from shipped UI
+ok 104 - unwanted reward and photo album descriptions are removed from shipped UI
+  ---
+  duration_ms: 0.481035
+  type: 'test'
+  ...
+# Subtest: stars economy has not changed from Round 5 when the cast is included
+ok 105 - stars economy has not changed from Round 5 when the cast is included
+  ---
+  duration_ms: 1.240815
+  type: 'test'
+  ...
+# Subtest: ZIP-supplied idle animation is seven frames, unchanged byte for byte
+ok 106 - ZIP-supplied idle animation is seven frames, unchanged byte for byte
+  ---
+  duration_ms: 6.760141
+  type: 'test'
+  ...
+# Subtest: franco cuddle keeps all five verified frames in a 1.35 second playback
+ok 107 - franco cuddle keeps all five verified frames in a 1.35 second playback
+  ---
+  duration_ms: 10.327155
+  type: 'test'
+  ...
+# Subtest: orion cuddle keeps all five verified frames in a 1.35 second playback
+ok 108 - orion cuddle keeps all five verified frames in a 1.35 second playback
+  ---
+  duration_ms: 14.63471
+  type: 'test'
+  ...
+# Subtest: all animated originals and still fallbacks are embedded and cached
+ok 109 - all animated originals and still fallbacks are embedded and cached
+  ---
+  duration_ms: 235.950604
+  type: 'test'
+  ...
+# Subtest: table and clothing missions belong in the corrected rooms
+ok 110 - table and clothing missions belong in the corrected rooms
+  ---
+  duration_ms: 1.148588
+  type: 'test'
+  ...
+# Subtest: Go happily to bed earns two stars once each local day, outside routine
+ok 111 - Go happily to bed earns two stars once each local day, outside routine
+  ---
+  duration_ms: 2.202885
+  type: 'test'
+  ...
+# Subtest: morning and evening clothing completions are independently recordable
+ok 112 - morning and evening clothing completions are independently recordable
+  ---
+  duration_ms: 0.674102
+  type: 'test'
+  ...
+# Subtest: help with tea has one editable daily star and resets with the local date
+ok 113 - help with tea has one editable daily star and resets with the local date
+  ---
+  duration_ms: 0.636166
+  type: 'test'
+  ...
+# Subtest: migration preserves recorded awards, edits and spent stars
+ok 114 - migration preserves recorded awards, edits and spent stars
+  ---
+  duration_ms: 2.897779
+  type: 'test'
+  ...
+# Subtest: legacy five-of-five evening configuration is bounded to the new four jobs
+ok 115 - legacy five-of-five evening configuration is bounded to the new four jobs
+  ---
+  duration_ms: 1.148017
+  type: 'test'
+  ...
+# Subtest: daily missions and collected fairies reset without deleting saved stars
+ok 116 - daily missions and collected fairies reset without deleting saved stars
+  ---
+  duration_ms: 0.661764
+  type: 'test'
+  ...
+# Subtest: cats are unique per day and their play never creates a star award
+ok 117 - cats are unique per day and their play never creates a star award
+  ---
+  duration_ms: 0.278534
+  type: 'test'
+  ...
+# Subtest: followers have distinct delays and speeds, with small head-halo offsets
+ok 118 - followers have distinct delays and speeds, with small head-halo offsets
+  ---
+  duration_ms: 0.15501
+  type: 'test'
+  ...
+# Subtest: garden randomness is stable during a day, changes between days, and avoids overlap
+ok 119 - garden randomness is stable during a day, changes between days, and avoids overlap
+  ---
+  duration_ms: 17.915107
+  type: 'test'
+  ...
+# Subtest: bathroom cat anchors stay on mat, away from toilet
+ok 120 - bathroom cat anchors stay on mat, away from toilet
+  ---
+  duration_ms: 0.405173
+  type: 'test'
+  ...
+# Subtest: midnight timer uses local calendar boundaries and British daylight saving
+ok 121 - midnight timer uses local calendar boundaries and British daylight saving
+  ---
+  duration_ms: 33.086805
+  type: 'test'
+  ...
+# Subtest: real PBKDF2 verifies the chosen PIN and rejects a different PIN
+ok 122 - real PBKDF2 verifies the chosen PIN and rejects a different PIN
+  ---
+  duration_ms: 137.729964
+  type: 'test'
+  ...
+# Subtest: PIN setup rejects missing, short, long and non-numeric PINs
+ok 123 - PIN setup rejects missing, short, long and non-numeric PINs
+  ---
+  duration_ms: 0.705559
+  type: 'test'
+  ...
+# Subtest: PIN salts and recovery codes are independently randomized
+ok 124 - PIN salts and recovery codes are independently randomized
+  ---
+  duration_ms: 103.980153
+  type: 'test'
+  ...
+# Subtest: recovery accepts a formatted copy of the recovery key but not the PIN
+ok 125 - recovery accepts a formatted copy of the recovery key but not the PIN
+  ---
+  duration_ms: 112.267806
+  type: 'test'
+  ...
+# Subtest: the actual restore parser reads a zero-state export without inventing stars
+ok 126 - the actual restore parser reads a zero-state export without inventing stars
+  ---
+  duration_ms: 2.402342
+  type: 'test'
+  ...
+# Subtest: the restore parser preserves photo bytes as a local Blob
+ok 127 - the restore parser preserves photo bytes as a local Blob
+  ---
+  duration_ms: 2.384255
+  type: 'test'
+  ...
+# Subtest: a missing scrapbook image is rejected before restoring
+ok 128 - a missing scrapbook image is rejected before restoring
+  ---
+  duration_ms: 0.597248
+  type: 'test'
+  ...
+# Subtest: duplicate photo records and non-image payloads are rejected
+ok 129 - duplicate photo records and non-image payloads are rejected
+  ---
+  duration_ms: 1.173405
+  type: 'test'
+  ...
+# Subtest: wrong-format and truncated JSON files fail before a state can be returned
+ok 130 - wrong-format and truncated JSON files fail before a state can be returned
+  ---
+  duration_ms: 0.775974
+  type: 'test'
+  ...
+1..130
+# tests 130
+# suites 0
+# pass 130
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 760.961533
