@@ -126,6 +126,21 @@ body.calm .companion-layer .companion-art{animation:none!important}
  .garden-dense .mission-fairy .mission-label{max-width:74px!important;min-height:23px;max-height:25px;font-size:9px!important;padding:2px 3px!important}
 }
 
+/* Tick a reward off straight from the list, deducting its stars. */
+.reward-tick{width:44px;height:44px;min-width:44px;display:grid;place-items:center;border-radius:50%;background:var(--sage);color:#fff;border:1px solid #55876a}
+.reward-tick .line-icon{width:22px;height:22px;stroke-width:2.6}
+.reward-tick.locked{background:#f1ebe2;color:#b9ada0;border-color:#e6dcd1;opacity:1}
+.ticked-today{background:#f2f6ed;border:1px solid #d7e2ce;border-radius:var(--radius);padding:12px 14px;margin:14px 0}
+.ticked-row{gap:10px;align-items:center}
+.ticked-row .grow{display:flex;flex-direction:column;gap:2px}
+.ticked-mark{width:28px;height:28px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;flex:none}
+.ticked-mark .line-icon{width:16px;height:16px;stroke-width:3}
+.tick-sum{display:flex;justify-content:center;gap:34px;margin:6px 0 18px}
+.tick-sum span{display:flex;flex-direction:column;align-items:center}
+.tick-sum b{font-size:28px;line-height:1.1}
+.tick-sum small{color:var(--muted);font-size:12px}
+@media(max-width:600px){.reward-row-end{display:grid;grid-template-columns:44px 44px;grid-template-areas:"cost cost" "pin tick";gap:6px;justify-items:center;align-items:center}.reward-row-end .reward-cost{grid-area:cost;min-width:94px}.reward-row-end .reward-row-pin{grid-area:pin}.reward-row-end .reward-tick{grid-area:tick}}
+
 /* Progress towards a routine star, shown when a single job earns nothing yet. */
 .routine-progress{display:flex;flex-direction:column;align-items:center;gap:10px;margin:6px 0 16px}
 .routine-progress p{color:var(--muted);max-width:28ch}
