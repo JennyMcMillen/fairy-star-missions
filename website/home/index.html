@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+ <meta name="theme-color" content="#0f1f16">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="apple-mobile-web-app-title" content="Home">
+ <meta name="robots" content="noindex,nofollow,noarchive">
+ <link rel="manifest" href="manifest.webmanifest">
+ <link rel="apple-touch-icon" href="icon-180.png">
+ <link rel="icon" type="image/png" href="icon-192.png">
+ <title>Family Home</title>
+ <link rel="stylesheet" href="home.css">
+ <script defer src="../data.js"></script>
+ <script defer src="../engine.js"></script>
+ <script defer src="home.js"></script>
+</head>
+<body>
+ <div class="bg" aria-hidden="true"></div>
+ <div class="night-veil" aria-hidden="true"></div>
+
+ <main class="board" id="board">
+  <header class="top">
+   <div class="greet">
+    <p class="day" id="dayname">&nbsp;</p>
+    <h1 id="datetext">&nbsp;</h1>
+   </div>
+   <div class="top-right">
+    <div class="weather glass" id="weather"><span class="w-icon" id="w-icon"></span><span class="w-temp" id="w-temp">&ndash;</span><span class="w-range" id="w-range"></span></div>
+    <div class="clock" id="clock">&ndash;</div>
+   </div>
+  </header>
+
+  <section class="glass card hero" aria-labelledby="h-today">
+   <div class="card-head">
+    <h2 id="h-today">Today</h2>
+    <span class="next" id="next"></span>
+   </div>
+   <div class="allday" id="today-allday"></div>
+   <ol class="events" id="today-events"></ol>
+   <p class="tonight" id="tonight"></p>
+  </section>
+
+  <section class="glass card todos" aria-labelledby="h-todo">
+   <div class="card-head"><h2 id="h-todo">To-do</h2><span class="sub" id="todo-sub">Life</span></div>
+   <ul class="todo-list" id="todo-list"><li class="muted">Loading&hellip;</li></ul>
+  </section>
+
+  <a class="glass card alba" id="alba" href="../" aria-labelledby="h-alba">
+   <div class="card-head"><h2 id="h-alba">Alba&rsquo;s stars</h2><span class="go">Open &rsaquo;</span></div>
+   <div class="stars-row">
+    <span class="star-num" id="star-balance">&ndash;</span><span class="star-glyph">&#10022;</span>
+    <span class="star-today" id="star-today"></span>
+   </div>
+   <div class="goal" id="star-goal"></div>
+  </a>
+
+  <section class="glass card meals" aria-labelledby="h-meals">
+   <div class="card-head"><h2 id="h-meals">Meals</h2></div>
+   <div id="meals"></div>
+  </section>
+
+  <section class="glass card tomorrow" aria-labelledby="h-tomorrow">
+   <div class="card-head"><h2 id="h-tomorrow">Tomorrow</h2><span class="sub" id="tomorrow-sub"></span></div>
+   <div class="allday" id="tomorrow-allday"></div>
+   <ol class="events compact" id="tomorrow-events"></ol>
+  </section>
+
+  <section class="glass card weekend" aria-labelledby="h-weekend">
+   <div class="card-head"><h2 id="h-weekend">This weekend</h2></div>
+   <div class="wk" id="weekend"></div>
+  </section>
+
+  <section class="glass card heads" aria-labelledby="h-heads">
+   <div class="card-head"><h2 id="h-heads">Heads up</h2></div>
+   <ul class="heads-list" id="heads"></ul>
+  </section>
+
+  <footer class="dock">
+   <a class="glass pill" id="outfit" href="https://claude.ai/artifact/GkbkM5PwYLAi89b5tnpVpY" target="_blank" rel="noopener">&#128087; Today&rsquo;s outfit</a>
+   <div class="glass pill alexa">&#128266; Say &ldquo;Alexa, open my digest&rdquo;</div>
+   <span class="updated" id="updated"></span>
+  </footer>
+ </main>
+
+ <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

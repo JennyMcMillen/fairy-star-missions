@@ -1,0 +1,58 @@
+{
+ "version": 1,
+ "generatedAt": "2026-01-01T05:20:00+00:00",
+ "date": "2026-01-01",
+ "today": {
+  "allDay": [
+   "Example all-day item"
+  ],
+  "events": [
+   {
+    "start": "08:50",
+    "end": "09:00",
+    "title": "School drop-off"
+   },
+   {
+    "start": "17:00",
+    "end": "18:00",
+    "title": "Example evening activity"
+   }
+  ]
+ },
+ "tomorrow": {
+  "date": "2026-01-02",
+  "allDay": [],
+  "events": [
+   {
+    "start": "10:00",
+    "end": "11:00",
+    "title": "Example event"
+   }
+  ]
+ },
+ "weekend": [
+  {
+   "date": "2026-01-03",
+   "items": [
+    "Example Saturday plan"
+   ]
+  },
+  {
+   "date": "2026-01-04",
+   "items": []
+  }
+ ],
+ "tonight": "TV time",
+ "meals": {
+  "dinner": "Example dinner",
+  "dinnerNotes": [],
+  "lunch": {
+   "jenny": "Example lunch",
+   "wayne": "Example lunch"
+  },
+  "defrost": ""
+ },
+ "headsUp": [
+  "Example heads-up line"
+ ]
+}
